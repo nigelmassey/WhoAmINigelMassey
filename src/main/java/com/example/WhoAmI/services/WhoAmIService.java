@@ -17,7 +17,7 @@ public class WhoAmIService {
 
     public int getAgeFromName(String first_name){
 
-        String url = "https://api.agify.io/?name=" + first_name;
+        String url = String.format("https://api.agify.io/?name=%s", first_name);
 
         var agifyResult = this.restTemplate.getForObject(url, AgifyModel.class);
 
@@ -29,15 +29,15 @@ public class WhoAmIService {
 
         String url = String.format("https://api.agify.io/?name=%s&country_id=%s", first_name, country_code);
 
-        var genderizeResult = this.restTemplate.getForObject(url, AgifyModel.class);
+        var agifyResult = this.restTemplate.getForObject(url, AgifyModel.class);
 
-        return genderizeResult.age;
+        return agifyResult.age;
 
     }
 
     public String getGenderFromName(String first_name){
 
-        String url = "https://api.genderize.io/?name=" + first_name;
+        String url = String.format("https://api.genderize.io/?name=%s", first_name);
 
         var genderizeResult = this.restTemplate.getForObject(url, GenderizeModel.class);
 
