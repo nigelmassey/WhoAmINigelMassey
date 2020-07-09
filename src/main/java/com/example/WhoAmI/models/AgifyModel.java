@@ -29,14 +29,4 @@ public class AgifyModel {
     public String getCountry_id() {
         return country_id;
     }
-
-    @Override
-    public String toString() {
-        return "AgifyModel{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", count=" + count +
-                ", country_id='" + country_id + '\'' +
-                '}';
-    }
 }
