@@ -19,7 +19,7 @@ public class WhoAmIService {
 
         String url = String.format("https://api.agify.io/?name=%s", first_name);
 
-        var agifyResult = this.restTemplate.getForObject(url, AgifyModel.class);
+        AgifyModel agifyResult = this.restTemplate.getForObject(url, AgifyModel.class);
 
         return agifyResult.age;
 
@@ -29,7 +29,7 @@ public class WhoAmIService {
 
         String url = String.format("https://api.agify.io/?name=%s&country_id=%s", first_name, country_code);
 
-        var agifyResult = this.restTemplate.getForObject(url, AgifyModel.class);
+        AgifyModel agifyResult = this.restTemplate.getForObject(url, AgifyModel.class);
 
         return agifyResult.age;
 
@@ -39,7 +39,7 @@ public class WhoAmIService {
 
         String url = String.format("https://api.genderize.io/?name=%s", first_name);
 
-        var genderizeResult = this.restTemplate.getForObject(url, GenderizeModel.class);
+        GenderizeModel genderizeResult = this.restTemplate.getForObject(url, GenderizeModel.class);
 
         return genderizeResult.gender;
 
@@ -49,7 +49,7 @@ public class WhoAmIService {
 
         String url = String.format("https://api.genderize.io/?name=%s&country_id=%s", first_name, country_code);
 
-        var genderizeResult = this.restTemplate.getForObject(url, GenderizeModel.class);
+        GenderizeModel genderizeResult = this.restTemplate.getForObject(url, GenderizeModel.class);
 
         return genderizeResult.gender;
 
