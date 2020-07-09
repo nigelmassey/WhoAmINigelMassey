@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/whoami")
 public class WhoAmIController {
 
     @Autowired
     private WhoAmIService whoAmIService;
 
-    @PostMapping("/whoami")
+    @PostMapping
     public WhoAmIResponseModel whoami(@RequestBody WhoAmIRequestModel whoAmIRequest){
 
         int age = whoAmIService.getAgeFromNameAndLocation(whoAmIRequest.getFirst_name(), whoAmIRequest.getCountry_code());
