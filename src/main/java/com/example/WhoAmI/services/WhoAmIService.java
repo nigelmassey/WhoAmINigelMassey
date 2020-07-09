@@ -21,7 +21,7 @@ public class WhoAmIService {
 
         AgifyModel agifyResult = this.restTemplate.getForObject(url, AgifyModel.class);
 
-        return agifyResult.age;
+        return agifyResult != null ? agifyResult.getAge() : 0;
 
     }
 
@@ -31,7 +31,7 @@ public class WhoAmIService {
 
         AgifyModel agifyResult = this.restTemplate.getForObject(url, AgifyModel.class);
 
-        return agifyResult.age;
+        return agifyResult != null ? agifyResult.getAge() : 0;
 
     }
 
@@ -41,7 +41,7 @@ public class WhoAmIService {
 
         GenderizeModel genderizeResult = this.restTemplate.getForObject(url, GenderizeModel.class);
 
-        return genderizeResult.gender;
+        return genderizeResult != null ? genderizeResult.getGender() : "n/a";
 
     }
 
@@ -51,7 +51,7 @@ public class WhoAmIService {
 
         GenderizeModel genderizeResult = this.restTemplate.getForObject(url, GenderizeModel.class);
 
-        return genderizeResult.gender;
+        return genderizeResult != null ? genderizeResult.getGender() : "n/a";
 
     }
 }

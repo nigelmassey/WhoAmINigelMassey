@@ -2,13 +2,10 @@ package com.example.WhoAmI.models;
 
 public class AgifyModel {
 
-    public String name;
-    public Integer age;
-    public Long count;
-    public String country_id;
-
-    public AgifyModel() {
-    }
+    private final String name;
+    private final int age;
+    private final Long count;
+    private final String country_id;
 
     public AgifyModel(String name, Integer age, Long count, String country_id) {
         this.name = name;
@@ -21,31 +18,25 @@ public class AgifyModel {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
+    public int getAge() {
         return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     public Long getCount() {
         return count;
     }
 
-    public void setCount(Long count) {
-        this.count = count;
-    }
-
     public String getCountry_id() {
         return country_id;
     }
 
-    public void setCountry_id(String country_id) {
-        this.country_id = country_id;
+    @Override
+    public String toString() {
+        return "AgifyModel{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", count=" + count +
+                ", country_id='" + country_id + '\'' +
+                '}';
     }
 }
