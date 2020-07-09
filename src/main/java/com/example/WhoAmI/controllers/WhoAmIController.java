@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/whoami")
 public class WhoAmIController {
 
+    private final WhoAmIService whoAmIService;
+
     @Autowired
-    private WhoAmIService whoAmIService;
+    public WhoAmIController(WhoAmIService whoAmIService) {
+        this.whoAmIService = whoAmIService;
+    }
 
     @PostMapping
     public WhoAmIResponseModel whoami(@RequestBody WhoAmIRequestModel whoAmIRequest){
