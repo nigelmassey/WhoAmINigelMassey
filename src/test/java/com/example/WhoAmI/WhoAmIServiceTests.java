@@ -20,6 +20,11 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class WhoAmIServiceTests {
 
+    private final String agifyUrlWithName = "https://api.agify.io/?name={first_name}";
+    private final String genderizeUrlWithName = "https://api.agify.io/?name={first_name}";
+    private final String agifyUrlWithNameAndCountryCode = "https://api.agify.io/?name={first_name}&country_id={country_code}";
+    private final String genderizeUrlWithNameAndCountryCode = "https://api.genderize.io/?name={first_name}&country_id={country_code}";
+
     @InjectMocks
     WhoAmIService whoAmIService;
 
@@ -30,8 +35,7 @@ public class WhoAmIServiceTests {
     public void getAgeTest(){
 
         String name = "Nigel";
-        String url = String.format("https://api.agify.io/?name=%s", name);
-        when(restTemplate.getForObject(url, AgifyModel.class)).thenReturn(new AgifyModel(name, 30, 1, ""));
+        when(restTemplate.getForObject(agifyUrlWithName, AgifyModel.class, name)).thenReturn(new AgifyModel(name, 30, 1, ""));
         whoAmIService.getAgeFromName("Nigel");
 
     }
