@@ -4,10 +4,10 @@ public class AgifyModel {
 
     private final String name;
     private final int age;
-    private final Long count;
+    private final int count;
     private final String country_id;
 
-    public AgifyModel(String name, Integer age, Long count, String country_id) {
+    public AgifyModel(String name, Integer age, int count, String country_id) {
         this.name = name;
         this.age = age;
         this.count = count;
@@ -22,7 +22,7 @@ public class AgifyModel {
         return age;
     }
 
-    public Long getCount() {
+    public int getCount() {
         return count;
     }
 

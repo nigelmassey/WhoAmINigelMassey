@@ -11,8 +11,8 @@ public class WhoAmIService {
 
     private final RestTemplate restTemplate;
 
-    public WhoAmIService(RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplate = restTemplateBuilder.build();
+    public WhoAmIService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
 
     public int getAgeFromName(String first_name){
