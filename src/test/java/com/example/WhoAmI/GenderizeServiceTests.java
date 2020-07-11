@@ -28,8 +28,8 @@ public class GenderizeServiceTests {
     public void givenGetGenderFromNameWhenCorrectParameterPassedThenReturnGender() {
 
         String name = "Nigel";
-        when(restTemplate.getForObject(UrlWithName, GenderizeModel.class, name)).thenReturn(new GenderizeModel(name, "Male", 0.99, 1, "GB"));
-        assertEquals("Male", genderizeService.getGenderFromName(name));
+        when(restTemplate.getForObject(UrlWithName, GenderizeModel.class, name)).thenReturn(new GenderizeModel(name, "male", 0.99, 1, "GB"));
+        assertEquals("male", genderizeService.getGenderFromName(name));
 
     }
 
@@ -37,7 +37,6 @@ public class GenderizeServiceTests {
     public void givenGetGenderFromNameWhenAnInvalidNameValueSentThenReturnNA() {
 
         String name = "Nigel";
-        //when(restTemplate.getForObject(agifyUrlWithName, AgifyModel.class, name)).thenReturn(new AgifyModel(name, 30, 1, ""));
         assertEquals("n/a", genderizeService.getGenderFromName(""));
 
     }

@@ -17,7 +17,7 @@ public class GenderizeService {
 
     public String getGenderFromName(String first_name){
 
-        GenderizeModel genderizeResult = this.restTemplate.getForObject(UrlWithName, GenderizeModel.class);
+        GenderizeModel genderizeResult = this.restTemplate.getForObject(UrlWithName, GenderizeModel.class, first_name);
 
         return genderizeResult != null ? genderizeResult.getGender() : "n/a";
 
