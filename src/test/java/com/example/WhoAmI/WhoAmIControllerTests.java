@@ -33,7 +33,7 @@ public class WhoAmIControllerTests {
     private GenderizeService genderizeService;
 
     @Test
-    public void shouldReturnDefaultMessage() throws Exception {
+    public void givenPostWhoAmIWhenGivenCorrectParametersThenReturnFullObjectInJson() throws Exception {
 
         String name = "Nigel";
         String country_code = "GB";
@@ -44,7 +44,22 @@ public class WhoAmIControllerTests {
         this.mockMvc.perform(post("/whoami")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(new WhoAmIRequestModel(name, country_code))))
-                .andDo(print()).andExpect(status().isOk());
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("{\"first_name\":\"Nigel\",\"country_code\":\"GB\",\"age\":12,\"gender\":\"male\"}"));
+
+    }
+
+    @Test
+    public void givenPostWhoAmIWhenServicesReturnNullThenAgeEqualsZeroAndGenderEqualsNull() throws Exception {
+
+        String name = "Nigel";
+        String country_code = "GB";
+
+        this.mockMvc.perform(post("/whoami")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(new WhoAmIRequestModel(name, country_code))))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().json("{\"first_name\":\"Nigel\",\"country_code\":\"GB\",\"age\":0,\"gender\":null}"));
 
     }
 

@@ -10,6 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.client.RestTemplate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,27 +26,27 @@ public class GenderizeServiceTests {
     RestTemplate restTemplate;
 
     @Test
-    public void givenGetGenderFromNameWhenCorrectParameterPassedThenReturnGender() {
+    public void givenGetGenderFromNameAndLocationWhenCorrectParameterPassedThenReturnGender() {
 
         String name = "Nigel";
-        when(restTemplate.getForObject(UrlWithName, GenderizeModel.class, name)).thenReturn(new GenderizeModel(name, "male", 0.99, 1, "GB"));
-        assertEquals("male", genderizeService.getGenderFromName(name));
+        String country_code = "GB";
+        when(restTemplate.getForObject(UrlWithNameAndCountryCode, GenderizeModel.class, name, country_code)).thenReturn(new GenderizeModel(name, "male", 0.99, 1, country_code));
+        assertEquals("male", genderizeService.getGenderFromNameAndLocation(name, country_code));
 
     }
 
     @Test
-    public void givenGetGenderFromNameWhenAnInvalidNameValueSentThenReturnNA() {
+    public void givenGetGenderFromNameWhenAnInvalidNameValueSentThenReturnNull() {
 
-        String name = "Nigel";
-        assertEquals("n/a", genderizeService.getGenderFromName(""));
+        assertNull(genderizeService.getGenderFromName(""));
 
     }
 
     @Test
-    public void givenGetGenderFromNameAndLocationWhenAnInvalidCountryCodeSentThenReturnNA() {
+    public void givenGetGenderFromNameAndLocationWhenAnInvalidCountryCodeSentThenReturnNull() {
 
         String name = "Nigel";
-        assertEquals("n/a", genderizeService.getGenderFromNameAndLocation(name, ""));
+        assertNull(genderizeService.getGenderFromNameAndLocation(name, ""));
 
     }
 

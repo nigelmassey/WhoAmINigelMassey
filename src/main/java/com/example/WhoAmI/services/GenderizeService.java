@@ -19,7 +19,7 @@ public class GenderizeService {
 
         GenderizeModel genderizeResult = this.restTemplate.getForObject(UrlWithName, GenderizeModel.class, first_name);
 
-        return genderizeResult != null ? genderizeResult.getGender() : "n/a";
+        return genderizeResult != null ? genderizeResult.getGender() : null;
 
     }
 
@@ -27,7 +27,7 @@ public class GenderizeService {
 
         GenderizeModel genderizeResult = this.restTemplate.getForObject(UrlWithNameAndCountryCode, GenderizeModel.class, first_name, country_code);
 
-        return genderizeResult != null ? genderizeResult.getGender() : "n/a";
+        return genderizeResult != null ? genderizeResult.getGender() : null;
 
     }
 
